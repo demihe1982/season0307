@@ -5,6 +5,9 @@ import cn.dyan.tx.TransactionConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+/**
+ * 为保证业务的一致性，讲事务设置在Service层
+ */
 public class TransactionBorder {
 
     public static void main(String[] args){
