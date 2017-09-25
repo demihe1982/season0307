@@ -1,9 +1,6 @@
 package cn.dyan.tx;
 
-import org.springframework.context.annotation.AdviceMode;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -17,6 +14,7 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan({"cn.dyan.services","cn.dyan.dao"})
 @EnableTransactionManagement
+@EnableAspectJAutoProxy(exposeProxy = true)
 public class TransactionConfig {
 
     @Bean

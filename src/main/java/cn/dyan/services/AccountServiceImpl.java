@@ -1,10 +1,16 @@
 package cn.dyan.services;
 
+import cn.dyan.AspectjTransaction;
 import cn.dyan.dao.AccountDao;
+import org.springframework.aop.framework.AopContext;
+import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.aspectj.AnnotationTransactionAspect;
+
+import static org.springframework.aop.framework.AopContext.currentProxy;
 
 @Component
 public class AccountServiceImpl implements AccountService {
@@ -30,9 +36,10 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public boolean createAccountAndTransfer(String newAccount, String targetAccount, int transferAmount) {
+        ((AccountService)AopContext.currentProxy()).insertAccount(newAccount,transferAmount);
 
-        insertAccount(newAccount,transferAmount);
-        transfer(newAccount,targetAccount,transferAmount);
+        //this.insertAccount(newAccount,transferAmount);
+        this.transfer(newAccount,targetAccount,transferAmount);
 
         return true;
     }
