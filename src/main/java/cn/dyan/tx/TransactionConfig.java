@@ -1,5 +1,6 @@
 package cn.dyan.tx;
 
+import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +9,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.aspectj.AnnotationTransactionAspect;
+import org.springframework.transaction.config.TransactionManagementConfigUtils;
 
 import javax.sql.DataSource;
 
@@ -35,4 +38,11 @@ public class TransactionConfig {
     public JdbcTemplate jdbcTemplate(){
         return new JdbcTemplate(dataSource());
     }
+
+    /*@Bean(TransactionManagementConfigUtils.TRANSACTION_ASPECT_CONFIGURATION_CLASS_NAME)
+    public AnnotationTransactionAspect annotationTransactionAspect(){
+        AnnotationTransactionAspect annotationTransactionAspect = AnnotationTransactionAspect.aspectOf();
+        annotationTransactionAspect.setTransactionManager(transactionManager());
+        return annotationTransactionAspect;
+    }*/
 }
