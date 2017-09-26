@@ -15,9 +15,10 @@ public class TransactionBorder {
         ApplicationContext context = new AnnotationConfigApplicationContext(TransactionConfig.class);
 
         AccountService accountService = context.getBean(AccountService.class);
-       /* accountService.insertAccount("account1",100);
-        accountService.insertAccount("account2",100);*/
-        accountService.transfer("account1","account2",100);
+        accountService.insertAccount("account1",100);
+//        accountService.insertAccount("account2",100);
+//        accountService.transfer("account1","account2",100);
+
 
 
 

@@ -22,9 +22,8 @@ public class UserService {
         return true;
     }
 
-    //@Transactional(noRollbackFor = CustomizedException.class)
+
     @Transactional(rollbackFor = CustomizedException.class)
-//    @Transactional
     public boolean updateUser(String uuid,String uname) throws CustomizedException {
         String sql = "UPDATE tb_user set uname= ? WHERE uuid = ?";
         int nums = jdbcTemplate.update(sql,uname,uuid);

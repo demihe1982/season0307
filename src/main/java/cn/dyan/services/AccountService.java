@@ -4,7 +4,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface AccountService {
 
-    @Transactional
     boolean transfer(String accountId,String targetAccount,int amount);
 
     @Transactional

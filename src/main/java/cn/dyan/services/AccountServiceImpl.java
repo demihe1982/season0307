@@ -24,14 +24,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     public boolean transfer(String accountId,String targetAccount,int amount){
-
         //当前账号减少
         accountDao.reduceAccount(accountId,amount);
         //目标账户增加
         accountDao.increaseAccount(targetAccount,amount);
-
         return true;
-
     }
 
     @Override

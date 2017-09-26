@@ -16,7 +16,5 @@ public class CustomizedTransaction {
         } catch (CustomizedException e) {
             e.printStackTrace();
         }
-
-
     }
 }

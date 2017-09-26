@@ -3,6 +3,7 @@ package cn.dyan.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class AccountDao {
@@ -16,24 +17,15 @@ public class AccountDao {
        return true;
     }
 
-    /**
-     * 账户金额增加
-     * @param accountId
-     * @param amount
-     * @return
-     */
+
+    @Transactional
     public boolean increaseAccount(String accountId,int amount){
         String sql = "UPDATE tb_account SET amount= amount+ ? WHERE account_id=?";
         jdbcTemplate.update(sql,amount,accountId);
         return true;
     }
 
-    /**
-     * 账号金额减少
-     * @param accountId
-     * @param amount
-     * @return
-     */
+    @Transactional
     public boolean reduceAccount(String accountId,int amount){
         String sql = "UPDATE tb_account SET amount= amount- ? WHERE account_id=?";
         jdbcTemplate.update(sql,amount,accountId);

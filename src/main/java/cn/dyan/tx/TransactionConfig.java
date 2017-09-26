@@ -28,7 +28,7 @@ public class TransactionConfig {
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/mytx");
         dataSource.setUsername("root");
-        dataSource.setPassword("Root!123");
+        dataSource.setPassword("root");
         return dataSource;
     }
 
